@@ -111,7 +111,7 @@ def ai_file_prompt(prompt, file_path) -> None:
     with open(output_path[0], 'w') as f:
         f.write(response.text)
 
-# genai.configure(api_key="AIzaSyDejoy5ri5frO5JR_PLkQtvShyDBFiYEtE")
+# genai.configure(api_key="")
 # prompt = "Correct the grammatical errors in the the text inside html tags and return the whole text."
 # file_path = 'output.txt'
 # ai_file_prompt(prompt, file_path)
