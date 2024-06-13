@@ -67,54 +67,6 @@ def get_all_links(url: str, output_file: str) -> None:
     driver.quit()
 
 
-def get_full_html_element(page_url: str, element_class: str, save_path: str) -> list:
-    # Set up Chrome options
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    # Set up ChromeDriver service
-    webdriver_service = Service("/usr/local/bin/chromedriver")
-
-    # Initialize the Chrome WebDriver
-    driver = webdriver.Chrome(service=webdriver_service, options=chrome_options)
-
-    # Open a website
-    driver.get(page_url)
-
-    # Get the page source
-    html = driver.page_source
-
-    # Parse the HTML with BeautifulSoup
-    soup = BeautifulSoup(html, 'html.parser')
-
-    # Find all elements with the specified class
-    elements = soup.find_all(class_=element_class)
-    file = open(save_path, 'w')
-    for element in elements:
-        file.write(str(element))
-
-    # Close the browser
-    driver.quit()
-
-    return elements
-
-
-def ai_file_prompt(prompt, file_path) -> None:
-    text_file = genai.upload_file(path=file_path)
-
-    model = genai.GenerativeModel(model_name="models/gemini-1.5-pro")
-
-    response = model.generate_content([prompt, text_file])
-    output_path = [file_path.split('.')[0] + '_correct.' + file_path.split('.')[1]]
-    print(response)
-    with open(output_path[0], 'w') as f:
-        f.write(response.text)
-
-# genai.configure(api_key="")
-# prompt = "Correct the grammatical errors in the the text inside html tags and return the whole text."
-# file_path = 'output.txt'
-# ai_file_prompt(prompt, file_path)
 
 
 get_all_links(URL, "links.txt")
