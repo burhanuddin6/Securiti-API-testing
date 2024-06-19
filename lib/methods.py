@@ -1,13 +1,10 @@
-from drivers import check_and_install_chrome_driver
+from lib.drivers import check_and_install_chrome_driver
 
 # Selenium script to extract links
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
-
-import json
 
 import time
 
@@ -102,14 +99,5 @@ class Browser():
         time.sleep(50)
     
 
-def main():
-    # read data.json as a dictionary
-    with open("lib/data.json", 'r') as file:
-        data = json.load(file)
-    # print(get_all_html_elements(URL, "tag", 'input'))
-    browser = Browser()
-    browser.open_page(URL)
-    browser.login_securiti(data["email"], data["password"])
-    browser.close_browser()
 if __name__ == "__main__":
-    main()
+    pass
