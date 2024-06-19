@@ -31,12 +31,24 @@ def install_chrome_driver(version: str):
     os.system("rm -r chromedriver")
 
 
-def check_and_install_chrome_driver() -> bool:
-    """Checks if chrome web driver is installed. If not installs it.
-    """
+# def check_and_install_chrome_driver() -> bool:
+#     """Checks if chrome web driver is installed. If not installs it.
+#     """
+#     try:
+#         output = subprocess.check_output(["chromedriver", "--version"]).decode("utf-8").strip()
+#         return True
+#     except FileNotFoundError:
+#         version = install_chrome()
+#         install_chrome_driver(version)
+
+# better to use device-agnostic library
+def check_and_install_chrome_driver():
+    '''Check if chromedriver is installed, if not install it.'''
     try:
-        output = subprocess.check_output(["chromedriver", "--version"]).decode("utf-8").strip()
-        return True
-    except FileNotFoundError:
-        version = install_chrome()
-        install_chrome_driver(version)
+        # Check if chromedriver is already installed
+        subprocess.run(["chromedriver", "--version"], check=True)
+    except: # subprocess.CalledProcessError:
+        # If chromedriver is not installed, install it
+        subprocess.run([sys.executable, "-m", "pip", "install", "chromedriver-autoinstaller"])
+        import chromedriver_autoinstaller
+        chromedriver_autoinstaller.install()
