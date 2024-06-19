@@ -1,3 +1,4 @@
 *.deb
 __pychache__
-env
+env/
+data.json
