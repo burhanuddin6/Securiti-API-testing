@@ -1,29 +1,37 @@
-from lib.methods import get_all_html_elements, Browser
+from lib.methods import Browser
 
 import json
+
+import time
+from selenium.webdriver.common.by import By
 
 URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
 CLASSNAME = "ld-tab-content"
 
-def get_all_links(url: str, output_file: str, ) -> None:
-    # get all list item html elements
-    li_elements = get_all_html_elements(URL, "tag", "body")
-
-    print(li_elements)
-    # file
-    file_handle = open(output_file, 'w')
-    file_handle.write(str(li_elements[0]))
-
-def main():
-    get_all_links(URL, "links.txt")
+def extract_doc_links():
     # read data.json as a dictionary
     with open("lib/data.json", 'r') as file:
         data = json.load(file)
-    # print(get_all_html_elements(URL, "tag", 'input'))
+    
     browser = Browser()
     browser.open_page(URL)
-    browser.login_securiti(data["email"], data["password"])
+    browser.login_securiti(data["email"], data["password"], "//li")
+    
+    time.sleep(2)   
+    li = browser.get_all_elements(By.XPATH, "//a[contains(@href, 'data-intelligence-target')]")
+    # display li html full tag
+    links = [i.get_attribute("href").split("#")[0] for i in li]
+    links = list(set(links))
+
+    # write to data_intelligence_links.txt
+    with open("lib/data_intelligence_links.txt", 'w') as file:
+        for link in links:
+            file.write(link + "\n")
+
     browser.close_browser()
+
+def main():
+    extract_doc_links()
 
 if __name__ == "__main__":
     main()
