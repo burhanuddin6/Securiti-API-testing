@@ -2,4 +2,4 @@
 __pychache__
 env/
 data.json
-*.txt
+*links.txt
