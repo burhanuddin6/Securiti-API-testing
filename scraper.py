@@ -2,7 +2,6 @@ from lib.methods import Browser
 
 import json
 
-import time
 from selenium.webdriver.common.by import By
 
 URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
@@ -15,11 +14,10 @@ def extract_doc_links():
     
     browser = Browser()
     browser.open_page(URL)
+    # login and wait for the page to load (wait for the li element to be present)
     browser.login_securiti(data["email"], data["password"], "//li")
     
-    time.sleep(2)   
     li = browser.get_all_elements(By.XPATH, "//a[contains(@href, 'data-intelligence-target')]")
-    # display li html full tag
     links = [i.get_attribute("href").split("#")[0] for i in li]
     links = list(set(links))
 
