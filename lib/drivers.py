@@ -52,3 +52,4 @@ def check_and_install_chrome_driver():
         subprocess.run([sys.executable, "-m", "pip", "install", "chromedriver-autoinstaller"])
         import chromedriver_autoinstaller
         chromedriver_autoinstaller.install()
+        
