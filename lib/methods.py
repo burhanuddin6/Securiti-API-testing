@@ -59,10 +59,10 @@ class Browser():
 
     def is_logged_in(self):
         try:
-            self.driver.find_element(By.XPATH, "//a[@href='/logout']")
-            return True
-        except:
+            self.driver.find_element(By.XPATH, "//input[@id='email']")
             return False
+        except:
+            return True
 
     def login_securiti(self, email: str, password: str, xpath_after_login: str):
         wait = WebDriverWait(self.driver, 10)  # Wait for up to 10 seconds
@@ -90,29 +90,29 @@ class Browser():
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
 
-    def get_all_html_elements(self, by: str, value: str):
-        '''Find all HTML elements by a certain attribute (class, id, name, etc.)'''
-        try:
-            # Get the page source
-            html = self.driver.page_source
+    # def get_all_html_elements(self, by: str, value: str):
+    #     '''Find all HTML elements by a certain attribute (class, id, name, etc.)'''
+    #     try:
+    #         # Get the page source
+    #         html = self.driver.page_source
 
-            # Parse the HTML with BeautifulSoup
-            soup = BeautifulSoup(html, 'html.parser')
+    #         # Parse the HTML with BeautifulSoup
+    #         soup = BeautifulSoup(html, 'html.parser')
 
-            # Find elements based on the 'by' and 'value' provided
-            if by == 'tag':
-                elements = soup.find_all(value)
-            elif by == 'class':
-                elements = soup.find_all(class_=value)
-            elif by == 'id':
-                elements = soup.find_all(id=value)
-            else:
-                elements = soup.find_all(attrs={by: value})
+    #         # Find elements based on the 'by' and 'value' provided
+    #         if by == 'tag':
+    #             elements = soup.find_all(value)
+    #         elif by == 'class':
+    #             elements = soup.find_all(class_=value)
+    #         elif by == 'id':
+    #             elements = soup.find_all(id=value)
+    #         else:
+    #             elements = soup.find_all(attrs={by: value})
         
-            return elements
+    #         return elements
         
-        except:
-            raise ValueError("An Exception Occurred. Cannot complete the operation get_all_html_elements")
+    #     except:
+    #         raise ValueError("An Exception Occurred. Cannot complete the operation get_all_html_elements")
     
 
 if __name__ == "__main__":
