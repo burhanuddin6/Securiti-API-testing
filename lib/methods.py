@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import pickle
 import os
+import json
 
 URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
 CLASSNAME = "ld-tab-content"
@@ -31,6 +32,9 @@ class Browser():
         
         # Initialize the Chrome WebDriver
         self.driver = webdriver.Chrome(options=chrome_options)
+
+        # set the driver to wait for every page to fully load
+        # self.driver.implicitly_wait(10)
 
     def open_page(self, url: str):
         self.driver.get(url)
@@ -89,31 +93,39 @@ class Browser():
                 cookies = pickle.load(file)
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
-
-    # def get_all_html_elements(self, by: str, value: str):
-    #     '''Find all HTML elements by a certain attribute (class, id, name, etc.)'''
-    #     try:
-    #         # Get the page source
-    #         html = self.driver.page_source
-
-    #         # Parse the HTML with BeautifulSoup
-    #         soup = BeautifulSoup(html, 'html.parser')
-
-    #         # Find elements based on the 'by' and 'value' provided
-    #         if by == 'tag':
-    #             elements = soup.find_all(value)
-    #         elif by == 'class':
-    #             elements = soup.find_all(class_=value)
-    #         elif by == 'id':
-    #             elements = soup.find_all(id=value)
-    #         else:
-    #             elements = soup.find_all(attrs={by: value})
-        
-    #         return elements
-        
-    #     except:
-    #         raise ValueError("An Exception Occurred. Cannot complete the operation get_all_html_elements")
     
+    def extract_links_securiti(self, url: str, xpath_for_redirect_load: str, xpath_for_urls: str, file_name: str, link_format_func: callable = lambda x: x):
+        '''Goes to the securities website and extracts all the links from the page
+        and writes them to a file.
+        xpath_for_urls: xpath for the urls based on the target page
+        file_name: name of the file to write the urls to
+        '''
+        # read data.json as a dictionary
+        with open("lib/data.json", 'r') as file:
+            data = json.load(file)
+        
+        self.open_page(url)
+        # login and wait for the page to load (wait for the li element to be present)
+        if not self.is_logged_in():
+            self.login_securiti(data["email"], data["password"], xpath_for_redirect_load)
+            time.sleep(5)
+        else:
+            time.sleep(5)
+            # this is not working
+            # TODO: fix this. Doesn't always want to wait for 10s if the page is already loaded
+            # WebDriverWait(self.driver, 10).until(
+            #     lambda driver: driver.execute_script("return document.readyState") == "complete"
+            # )
+
+        li = self.get_all_elements(By.XPATH, xpath_for_urls)
+        print([i.get_attribute("outerHTML") for i in li])
+        links = [link_format_func(i.get_attribute("href")) for i in li]
+        links = list(set(links))
+
+        # write to data_intelligence_links.txt
+        with open(file_name, 'a') as file:
+            for link in links:
+                file.write(link + "\n")
 
 if __name__ == "__main__":
     pass
