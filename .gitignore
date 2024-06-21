@@ -1,5 +1,5 @@
 *.deb
-__pychache__
+__pycache__
 env/
 data.json
 *links.txt
