@@ -9,6 +9,8 @@ from selenium.webdriver.common.by import By
     
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 import time
 import pickle
@@ -36,8 +38,22 @@ class Browser():
         # set the driver to wait for every page to fully load
         # self.driver.implicitly_wait(10)
 
-    def open_page(self, url: str):
+    def open_securiti_page(self, url: str, xpath_for_redirect_load: str=None):
         self.driver.get(url)
+        # read data.json as a dictionary
+        with open("lib/data.json", 'r') as file:
+            data = json.load(file)
+        # login and wait for the page to load (wait for the li element to be present)
+        if not self.is_logged_in():
+            self.login_securiti(data["email"], data["password"], xpath_for_redirect_load)
+            time.sleep(5)
+        else:
+            time.sleep(5)
+            # this is not working
+            # TODO: fix this. Doesn't always want to wait for 10s if the page is already loaded
+            # WebDriverWait(self.driver, 10).until(
+            #     lambda driver: driver.execute_script("return document.readyState") == "complete"
+            # )
 
     def close_browser(self):
         self.driver.quit()
@@ -68,7 +84,7 @@ class Browser():
         except:
             return True
 
-    def login_securiti(self, email: str, password: str, xpath_after_login: str):
+    def login_securiti(self, email: str, password: str, xpath_after_login: str=None):
         wait = WebDriverWait(self.driver, 10)  # Wait for up to 10 seconds
 
         self.add_input(by=By.ID, value="email", input_text=email)
@@ -78,7 +94,10 @@ class Browser():
         self.add_input(by=By.XPATH, value="//input[@type='password']", input_text=password)
         self.click_element(by=By.XPATH, value="//button[@type='submit']")
         
-        wait.until(EC.presence_of_element_located((By.XPATH, xpath_after_login)))
+        if xpath_after_login:
+            wait.until(EC.presence_of_element_located((By.XPATH, xpath_after_login)))
+        else:
+            time.sleep(10)
         
         self.save_cookies()
 
@@ -93,32 +112,36 @@ class Browser():
                 cookies = pickle.load(file)
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
+    def check_and_close_modal(self):
+        '''Checks all close buttons and returns after one
+        successful click. It can be the case that no close buttons
+        are found or none are clickable.
+        '''
+        close_xpath = "//*[contains(@class, 'close')]"
+        closures = self.get_all_elements(By.XPATH, close_xpath)
+        # check if any is clickable and then click
+        for closure in closures:
+            try:
+                closure.click()
+                return True # close if a single close button is clicked
+            except Exception as e:
+                print(str(e).split("\n")[0])
+        return False
     
-    def extract_links_securiti(self, url: str, xpath_for_redirect_load: str, xpath_for_urls: str, file_name: str, link_format_func: callable = lambda x: x):
+
+    def extract_links_securiti(self, url: str, xpath_for_urls: str, file_name: str, xpath_for_redirect_load: str=None, link_format_func: callable = lambda x: x):
         '''Goes to the securities website and extracts all the links from the page
         and writes them to a file.
+        url: url of the page to open and extract links from
         xpath_for_urls: xpath for the urls based on the target page
         file_name: name of the file to write the urls to
+        xpath_for_redirect_load: xpath for the element to wait for before proceeding. If not provided, it will wait for 10s
+        link_format_func: function to format the link before writing to the file
         '''
-        # read data.json as a dictionary
-        with open("lib/data.json", 'r') as file:
-            data = json.load(file)
         
-        self.open_page(url)
-        # login and wait for the page to load (wait for the li element to be present)
-        if not self.is_logged_in():
-            self.login_securiti(data["email"], data["password"], xpath_for_redirect_load)
-            time.sleep(5)
-        else:
-            time.sleep(5)
-            # this is not working
-            # TODO: fix this. Doesn't always want to wait for 10s if the page is already loaded
-            # WebDriverWait(self.driver, 10).until(
-            #     lambda driver: driver.execute_script("return document.readyState") == "complete"
-            # )
+        self.open_securiti_page(url, xpath_for_redirect_load)
 
         li = self.get_all_elements(By.XPATH, xpath_for_urls)
-        print([i.get_attribute("outerHTML") for i in li])
         links = [link_format_func(i.get_attribute("href")) for i in li]
         links = list(set(links))
 
@@ -126,6 +149,80 @@ class Browser():
         with open(file_name, 'a') as file:
             for link in links:
                 file.write(link + "\n")
+    
+    def click_element_at_coordinates(self, element):
+        '''Clicks on an element at its specific coordinates, bypassing any overlays'''
+        action = ActionChains(self.driver)
+        location = element.location
+        size = element.size
+        x = location['x'] + size['width'] / 2
+        y = location['y'] + size['height'] / 2
+        action.move_by_offset(x, y).click().perform()
+        action.reset_actions()  # Reset the action to prevent offset issues in further actions
+        time.sleep(1)  # Wait for the click to be processed
+
+    def click_element_and_handle_new_tab(self, div, urls_explored: set):
+        ret_dict = {'reload_elements': False}
+        try:
+            curr_page_url = self.driver.current_url
+            urls_explored.add(curr_page_url)
+            # check if div is interactable
+            if not div.is_displayed():
+                return ret_dict
+            div.click()
+            time.sleep(5)  
+            # check if url has changed
+            new_page_url = self.driver.current_url
+            if new_page_url != curr_page_url:
+                time.sleep(5)
+                self.driver.back()
+                ret_dict['reload_elements'] = True
+                time.sleep(5)
+                # if new_page_url in urls_explored:
+                #     # use browser back button
+                #     self.driver.back()
+                #     return
+                # self.traverse_site()  # Recursively handle the new page
+                pass
+            else:
+                if not self.check_and_close_modal():
+                # add logic of interacting with the elemnet in try except block
+                    try:
+                        div.click()
+                    except:
+                        self.click_element_at_coordinates(div)
+                time.sleep(5) # wait for close modal or interaction
+            return ret_dict
+        except Exception as e:
+            raise e
+
+    def handle_modal_or_interaction(self):
+        '''Implement handling of modals or other interactions if needed'''
+        pass
+    
+    def traverse_site(self, xpaths: list[str]):
+        '''Traverse the site by clicking on all divs that contain only text'''
+        clickable_elements = []
+        [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
+        # write outer html of all elemnts to traverse_site.temp.txt
+        with open("traverse_site.temp.txt", 'w') as file:
+        
+            page_urls = set()
+            for i in range(len(clickable_elements)):
+                try:
+                    # incase the url changes, reload the elements in order to avoid stale element exception
+                    # this assumes that the original page is restored by click_element_and_handle_new_tab function
+                    # through the browser back button
+                    # not that value of i does not change so the loop will continue from the same index
+                    reload_elements = self.click_element_and_handle_new_tab(clickable_elements[i], page_urls)['reload_elements']
+                    if reload_elements:
+                        clickable_elements = []
+                        [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
+                    file.write(clickable_elements[i].get_attribute("outerHTML") + "\n")
+                except Exception as e:
+                    # write the exception title to file
+                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n")
+
 
 if __name__ == "__main__":
     pass
