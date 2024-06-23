@@ -1,4 +1,5 @@
 from lib.drivers import check_and_install_chrome_driver
+from lib.node import WebElementNode
 
 # Selenium script to extract links
 from selenium import webdriver
@@ -117,7 +118,7 @@ class Browser():
         successful click. It can be the case that no close buttons
         are found or none are clickable.
         '''
-        close_xpath = "//*[contains(@class, 'close')]"
+        close_xpath = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')]"
         closures = self.get_all_elements(By.XPATH, close_xpath)
         # check if any is clickable and then click
         for closure in closures:
@@ -150,11 +151,9 @@ class Browser():
             for link in links:
                 file.write(link + "\n")
     
-    def click_element_at_coordinates(self, element):
+    def click_element_at_coordinates(self, location, size):
         '''Clicks on an element at its specific coordinates, bypassing any overlays'''
         action = ActionChains(self.driver)
-        location = element.location
-        size = element.size
         x = location['x'] + size['width'] / 2
         y = location['y'] + size['height'] / 2
         action.move_by_offset(x, y).click().perform()
@@ -169,28 +168,34 @@ class Browser():
             # check if div is interactable
             if not div.is_displayed():
                 return ret_dict
+            # extract location and size before clicking
+            location = div.location
+            size = div.size
             div.click()
             time.sleep(5)  
             # check if url has changed
             new_page_url = self.driver.current_url
             if new_page_url != curr_page_url:
                 time.sleep(5)
-                self.driver.back()
+                # there can be multiple redirects so we need to go back to the original page
+                while self.driver.current_url != curr_page_url:
+                    self.driver.back()
+                    time.sleep(5)
                 ret_dict['reload_elements'] = True
-                time.sleep(5)
                 # if new_page_url in urls_explored:
                 #     # use browser back button
                 #     self.driver.back()
                 #     return
-                # self.traverse_site()  # Recursively handle the new page
-                pass
+                # else:
+                #     self.traverse_site() # Recursively handle the new page
+                # pass
             else:
                 if not self.check_and_close_modal():
                 # add logic of interacting with the elemnet in try except block
                     try:
                         div.click()
                     except:
-                        self.click_element_at_coordinates(div)
+                        self.click_element_at_coordinates(dive)
                 time.sleep(5) # wait for close modal or interaction
             return ret_dict
         except Exception as e:
@@ -200,28 +205,29 @@ class Browser():
         '''Implement handling of modals or other interactions if needed'''
         pass
     
-    def traverse_site(self, xpaths: list[str]):
+    def traverse_site(self, xpaths: list[str], root: WebElementNode=None):
         '''Traverse the site by clicking on all divs that contain only text'''
         clickable_elements = []
         [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
-        # write outer html of all elemnts to traverse_site.temp.txt
+        # print all html attributes
+        # automatically attaches these nodes to root
+        [WebElementNode(name=(str(root.name) + '_' + str(i)), curr_url=self.driver.current_url, element=element, parent=root) for i, element in enumerate(clickable_elements)]
+        # write outer html of all elemnts to traverse_site.temp.txt 
         with open("traverse_site.temp.txt", 'w') as file:
         
             page_urls = set()
-            for i in range(len(clickable_elements)):
+            for node in root.children:
                 try:
                     # incase the url changes, reload the elements in order to avoid stale element exception
                     # this assumes that the original page is restored by click_element_and_handle_new_tab function
                     # through the browser back button
                     # not that value of i does not change so the loop will continue from the same index
-                    reload_elements = self.click_element_and_handle_new_tab(clickable_elements[i], page_urls)['reload_elements']
-                    if reload_elements:
-                        clickable_elements = []
-                        [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
-                    file.write(clickable_elements[i].get_attribute("outerHTML") + "\n")
+                    element = node.relocate_element(self.driver)
+                    file.write(element.get_attribute("outerHTML") + "\n\n")
+                    self.click_element_and_handle_new_tab(element, page_urls)
                 except Exception as e:
                     # write the exception title to file
-                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n")
+                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
 
 
 if __name__ == "__main__":

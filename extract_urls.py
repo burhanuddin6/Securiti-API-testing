@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from lib.node import WebElementNode
+
 
 def main():
     URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
@@ -22,8 +24,9 @@ def main():
     # divs_with_text_only = browser.get_all_elements(By.XPATH, "//div[not(*) and normalize-space()]")
     # print([i.get_attribute("outerHTML") for i in divs_with_text_only])
     
+    root = WebElementNode("1", URL2)
     xpaths = ["//input", "//button", "//a[@href]", "//div[contains(@class, 'clickable')]"]
-    browser.traverse_site(xpaths)
+    browser.traverse_site(xpaths, root=root)
     
     # xpath = "//button[@class='f-feedback-button f-btn-white ma-0 v-btn theme--light']"
     # browser.click_element(By.XPATH, xpath)
