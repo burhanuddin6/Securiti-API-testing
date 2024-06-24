@@ -12,6 +12,7 @@ from lib.node import WebElementNode
 def main():
     URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
     URL2 = "https://qa.securiti.xyz"
+    URL3 = "https://qa.securiti.xyz/#/di-dashboard"
     browser = Browser()
     # # please see the docstring of the extract_links function for more information on parameters
     # browser.extract_links_securiti(url=URL, xpath_for_urls="//a[contains(@href, 'data-intelligence-target')]", 
@@ -26,7 +27,12 @@ def main():
     
     root = WebElementNode("1", URL2)
     xpaths = ["//input", "//button", "//a[@href]", "//div[contains(@class, 'clickable')]"]
-    browser.traverse_site(xpaths, root=root)
+    time.sleep(5)
+    browser.traverse_site(xpaths, root=root, urls_explored=set(), depth=1)
+
+    # display the tree in an image UniqueDotExporter
+    from anytree.exporter import UniqueDotExporter
+    UniqueDotExporter(root).to_picture("tree.png")
     
     # xpath = "//button[@class='f-feedback-button f-btn-white ma-0 v-btn theme--light']"
     # browser.click_element(By.XPATH, xpath)

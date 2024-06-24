@@ -1,0 +1,402 @@
+<input aria-label="Select All" aria-checked="false" role="checkbox" type="checkbox" value="">
+
+<input aria-label="AQ org 1 " aria-checked="false" role="checkbox" type="checkbox" value="">
+
+<input aria-label="Default Organization (Primary)" aria-checked="true" role="checkbox" type="checkbox" value="">
+
+<input type="text" autocomplete="off" role="combobox" tabindex="-1">
+
+<input aria-label="All Systems" aria-checked="true" role="radio" type="radio" name="v-radio-332" value="all" tabindex="-1">
+
+<input aria-label="Native Assets" aria-checked="false" role="radio" type="radio" name="v-radio-332" value="native" tabindex="-1">
+
+<input aria-label="Non-Native Assets" aria-checked="false" role="radio" type="radio" name="v-radio-332" value="non_native" tabindex="-1">
+
+<input aria-label="Connected Assets" aria-checked="false" role="radio" type="radio" name="v-radio-373" value="connected" tabindex="-1">
+
+<input aria-label="Unconnected Assets" aria-checked="false" role="radio" type="radio" name="v-radio-373" value="unconnected" tabindex="-1">
+
+<input aria-label="All Systems" readonly="readonly" type="text" autocomplete="on" aria-readonly="false">
+
+Exception occurred: Message: element click intercepted: Element <input aria-label="All Systems" readonly="readonly" type="text" autocomplete="on" aria-readonly="false"> is not clickable at point (890, 304). Other element would receive the click: <div class="v-select__selections">...</div>
+
+<input readonly="readonly" type="text" autocomplete="on" aria-readonly="false">
+
+Exception occurred: Message: element click intercepted: Element <input readonly="readonly" type="text" autocomplete="on" aria-readonly="false"> is not clickable at point (1136, 304). Other element would receive the click: <div class="v-select__selections">...</div>
+
+<input aria-label="All Clouds" readonly="readonly" type="text" autocomplete="on" aria-readonly="false">
+
+Exception occurred: Message: element click intercepted: Element <input aria-label="All Clouds" readonly="readonly" type="text" autocomplete="on" aria-readonly="false"> is not clickable at point (691, 591). Other element would receive the click: <div class="v-select__selections">...</div>
+
+<input type="text" placeholder="Search">
+
+<input aria-label="Select all similar" aria-checked="false" disabled="disabled" role="checkbox" type="checkbox" value="false">
+
+<input type="text" placeholder="Ask Copilot">
+
+<button disabled="disabled" type="button" class="f-btn-pri ma-0 v-btn v-btn--block v-btn--disabled theme--light"><div class="v-btn__content">Save and Refresh</div></button>
+
+<button type="button" class="f-btn-flat f-btn-link f-btn-link-without-underline f-color-securiti-yellow text-uppercase mt-2 v-btn v-btn--small theme--dark"><div class="v-btn__content"><span class="f-text-bold">Close</span></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--dark" aria-haspopup="true" aria-label="Hamburger Menu" aria-controls="hamburger-menu-popup" aria-expanded="false"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-sm f-color-privaci-white material-icons theme--dark">menu</i></div></button>
+
+<button type="button" class="v-btn v-btn--icon theme--dark" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-label="Dashboards"><div class="v-btn__content"><svg version="1.1" viewBox="0 0 48 48" class="svg-icon svg-fill"><path pid="0" d="M37.333 4H10.667A6.665 6.665 0 0 0 4 10.667v26.666A6.665 6.665 0 0 0 10.667 44h26.666A6.665 6.665 0 0 0 44 37.333V10.667A6.665 6.665 0 0 0 37.333 4zm3.334 6.667V14h-20V7.333h16.666c1.834 0 3.334 1.5 3.334 3.334zm-30-3.334h6.666V14h-10v-3.333c0-1.834 1.5-3.334 3.334-3.334zm26.666 33.334H10.667a3.343 3.343 0 0 1-3.334-3.334v-20h33.334v20c0 1.834-1.5 3.334-3.334 3.334zm-6.666-18.334v13.334c0 .916-.75 1.666-1.667 1.666s-1.667-.75-1.667-1.666V22.333c0-.916.75-1.666 1.667-1.666s1.667.75 1.667 1.666zM37.333 29v6.667c0 .916-.75 1.666-1.666 1.666-.917 0-1.667-.75-1.667-1.666V29c0-.917.75-1.667 1.667-1.667.916 0 1.666.75 1.666 1.667zM24 30.667a6.665 6.665 0 0 1-6.667 6.666 6.665 6.665 0 0 1-6.666-6.666c0-.917.75-1.667 1.666-1.667.917 0 1.667.75 1.667 1.667 0 1.8 1.533 3.333 3.333 3.333 1.8 0 3.334-1.533 3.334-3.333 0-1.8-1.534-3.334-3.334-3.334-.916 0-1.666-.75-1.666-1.666 0-.917.75-1.667 1.666-1.667A6.665 6.665 0 0 1 24 30.667z" _fill="#000"></path></svg></div></button>
+
+<button type="button" class="v-btn v-btn--icon theme--dark" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-label="Policies"><div class="v-btn__content"><svg version="1.1" viewBox="0 0 48 48" class="svg-icon svg-fill"><path pid="0" d="M35.7 14.496v2.016c0 .916-.75 1.665-1.667 1.665-.916 0-1.666-.75-1.666-1.665v-2.016c0-2.733 0-4.249-.417-5.065a3.908 3.908 0 0 0-1.683-1.683c-.817-.416-2.317-.416-5.034-.416h-10.75c-2.716 0-4.216 0-5.05.416A3.908 3.908 0 0 0 7.75 9.431c-.417.833-.417 2.332-.417 5.065v18.992c0 2.732 0 4.248.417 5.064.383.733.95 1.3 1.683 1.683.817.416 2.317.416 5.05.416h5.5c.917 0 1.667.75 1.667 1.666 0 .917-.7 1.616-1.583 1.666l-.084.017h-5.5c-3.35 0-5.033 0-6.566-.783a7.203 7.203 0 0 1-3.134-3.132C4 38.552 4 36.87 4 33.505v-19.01c0-3.348 0-5.03.783-6.563A7.034 7.034 0 0 1 7.917 4.8C9.45 4 11.133 4 14.483 4h10.75c3.35 0 5.017 0 6.567.8a7.117 7.117 0 0 1 3.133 3.132c.784 1.532.784 3.215.784 6.564H35.7zm-3.517 21.057c-.283.284-.666.45-1.066.45s-.784-.166-1.067-.45l-2.6-2.615a1.478 1.478 0 0 1 0-2.1 1.48 1.48 0 0 1 2.1 0l1.533 1.55 5-5.031a1.48 1.48 0 0 1 2.1 0 1.478 1.478 0 0 1 0 2.1l-6.033 6.08.033.017zM44 23.192v6.397c0 10.28-8.65 13.695-10.383 14.261-.25.083-.5.133-.784.133-.283 0-.55-.05-.816-.133-1.717-.583-10.367-3.982-10.367-14.26v-6.398a2.535 2.535 0 0 1 2.517-2.532h17.316c.684 0 1.317.266 1.784.75.466.482.733 1.099.733 1.782zm-3.3.783H24.967v5.614c0 7.597 6.083 10.38 7.866 11.046 1.817-.667 7.867-3.465 7.867-11.046V23.975zm-21.683-3.299c0-.916-.75-1.666-1.667-1.666h-5.017c-.916 0-1.666.75-1.666 1.666 0 .917.75 1.666 1.666 1.666h5.017c.917 0 1.667-.75 1.667-1.666zM17.35 27.34c0-.916-.75-1.666-1.667-1.666h-3.35c-.916 0-1.666.75-1.666 1.666 0 .917.75 1.666 1.666 1.666h3.35c.917 0 1.667-.75 1.667-1.666zm10-13.328c0-.916-.75-1.665-1.667-1.665h-13.35c-.916 0-1.666.75-1.666 1.665 0 .917.75 1.666 1.666 1.666h13.35c.917 0 1.667-.75 1.667-1.666z"></path></svg></div></button>
+
+<button type="button" class="v-btn v-btn--icon theme--dark" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-label="Discovery Scans"><div class="v-btn__content"><svg version="1.1" viewBox="0 0 48 48" class="svg-icon svg-fill"><path pid="0" d="M23.988 44a1.667 1.667 0 0 1-1.667-1.668V27.319a3.701 3.701 0 0 1-.888-5.893 3.7 3.7 0 0 1 5.89.888h15.01A1.667 1.667 0 0 1 44 23.982c0 5.31-2.108 10.4-5.861 14.155A20.009 20.009 0 0 1 23.989 44zm1.668-17.983v14.647A16.674 16.674 0 0 0 40.665 25.65H26.023a.467.467 0 0 0-.367.367zm-6.<a href="#/di-dashboard" class="f-card clickable fill-height v-card v-sheet theme--light f-module-sensitive-data"><div class="layout fill-height column align-center justify-center"><div class="flex shrink"><svg version="1.1" viewBox="0 0 80 80" class="f-module-tiles-icon svg-icon svg-fill"><path pid="0" class="module-bg" d="M36.8 1.7c1.9-1.1 4.1-1.1 6 0l28.6 16.5c1.9 1.1 3 3.1 3 5.2v33.1c0 2.1-1.1 4.1-3 5.2L42.8 78.3c-1.9 1.1-4.1 1.1-6 0L8.2 61.7c-1.9-1.1-3-3.1-3-5.2v-33c0-2.1 1.1-4.1 3-5.2L36.8 1.7z"></path><path pid="1" d="M26.1 32.4l13.8-8.1 13.8 8.1v16.4l-13.8 8.1-13.8-8.1V32.4zm12.1-14.5c1-.6 2.2-.6 3.2 0l16.9 9.9c1 .6 1.5 1.6 1.5 2.7v20c0 1.1-.6 2.1-1.5 2.7l-16.9 9.9c-1 .6-2.2.6-3.2 0l-16.9-9.9c-1-.6-1.5-1.6-1.5-2.7v-20c0-1.1.6-2.1 1.5-2.7l16.9-9.9z" fill-rule="evenodd" clip-rule="evenodd" fill="#f0f5f8"></path><path pid="2" d="M26.1 32.4l13.8-8.1 13.8 8.1v16.4l-13.8 8.1-13.8-8.1V32.4zm12.1-14.5c1-.6 2.2-.6 3.2 0l16.9 9.9c1 .6 1.5 1.6 1.5 2.7v20c0 1.1-.6 2.1-1.5 2.7l-16.9 9.9c-1 .6-2.2.6-3.2 0l-16.9-9.9c-1-.6-1.5-1.6-1.5-2.7v-20c0-1.1.6-2.1 1.5-2.7l16.9-9.9z" fill-rule="evenodd" clip-rule="evenodd" fill="#f0f5f8"></path><path pid="3" d="M40.5 33.2c-.4-.2-.9-.2-1.3 0l-5.4 3.1c-.4.2-.6.6-.6 1.1v6.3c0 .4.2.9.6 1.1l5.4 3.1c.4.2.9.2 1.3 0l5.4-3.1c.4-.2.6-.6.6-1.1v-6.3c0-.4-.2-.9-.6-1.1l-5.4-3.1z" opacity=".7" fill="#f0f5f8"></path></svg></div><div class="flex shrink"><div class="f-module-tiles-title f-color-securiti-white mt-3">Sensitive Data Intelligence</div></div><!----></div></a>
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+5 3.395 0 0 1-2.05-1.016c-.132-.133-.249-.266-.382-.383a3.35 3.35 0 0 1-1.016-2.048l-.4-3.614a15.956 15.956 0 0 0-2.748-1.149L26.44 9.662c-.6.483-1.382.716-2.165.732h-.55c-.8 0-1.566-.25-2.165-.732L18.71 7.397c-.932.283-1.865.666-2.748 1.116l-.383 3.63a3.394 3.394 0 0 1-1.016 2.048c-.133.133-.267.25-.383.383a3.395 3.395 0 0 1-2.049 1.016l-3.615.4c-.466.866-.85 1.798-1.149 2.748l2.282 2.847c.483.6.733 1.382.733 2.165v.55c0 .782-.25 1.565-.733 2.165l-2.282 2.847c.283.933.666 1.865 1.116 2.731l-.017-.033z" _fill="#000"></path></svg></div></button>
+
+<button type="button" class="v-btn v-btn--icon theme--dark" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-label="Help"><div class="v-btn__content"><svg version="1.1" viewBox="0 0 48 48" class="svg-icon svg-fill"><path pid="0" d="M24 4C12.967 4 4 12.967 4 24s8.967 20 20 20 20-8.967 20-20S35.033 4 24 4zm0 36.667c-9.183 0-16.667-7.484-16.667-16.667 0-9.183 7.484-16.667 16.667-16.667 9.183 0 16.667 7.484 16.667 16.667 0 9.183-7.484 16.667-16.667 16.667zM32.333 19a6.665 6.665 0 0 1-6.666 6.667v1.65c0 .916-.75 1.666-1.667 1.666s-1.667-.75-1.667-1.666V24c0-.917.75-1.667 1.667-1.667h1.667C27.5 22.333 29 20.833 29 19c0-1.833-1.5-3.333-3.333-3.333h-3.334A3.343 3.343 0 0 0 19 19c0 .917-.75 1.667-1.667 1.667-.916 0-1.666-.75-1.666-1.667a6.665 6.665 0 0 1 6.666-6.667h3.334A6.665 6.665 0 0 1 32.333 19zm-6.25 14.633a2.084 2.084 0 1 1-4.168-.001 2.084 2.084 0 0 1 4.168.001z" _fill="#000"></path></svg></div></button>
+
+<button type="button" class="f-btn-square f-btn-pri v-btn theme--light" aria-label="Filter Panel" title="Filter Panel"><div class="v-btn__content"><svg version="1.1" viewBox="0 0 24 24" class="svg-icon svg-fill"><g fill-rule="evenodd" clip-rule="evenodd"><path pid="0" d="M16.8 5H22v2h-5.2c-.4 1.2-1.5 2-2.8 2s-2.4-.8-2.8-2H2V5h9.2c.4-1.2 1.5-2 2.8-2s2.4.8 2.8 2zM14 7c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1zM8.8 11H22v2H8.8c-.4 1.2-1.5 2-2.8 2s-2.4-.8-2.8-2H2v-2h1.2C3.6 9.8 4.7 9 6 9s2.4.8 2.8 2zM7 12c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM22 17h-1.2c-.4-1.2-1.5-2-2.8-2s-2.4.8-2.8 2H2v2h13.2c.4 1.2 1.5 2 2.8 2s2.4-.8 2.8-2H22v-2zm-4 2c.6 0 1-.4 1-1s-.4-1-1-1-1 .4-1 1 .4 1 1 1z"></path></g></svg></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--dark" title="Close Filter" tabindex="-1"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--dark">cancel</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon v-btn--small theme--dark" title="More Options" tabindex="-1"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--dark">list</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon v-btn--small theme--dark" title="Clear Filter" tabindex="-1"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--dark">cancel</i></div></button>
+
+<button disabled="disabled" type="button" class="f-btn-pri v-btn v-btn--block v-btn--disabled theme--dark" tabindex="-1"><div class="v-btn__content">Clear Text Search Filters</div></button>
+
+<button type="button" class="f-btn-pri ma-0 v-btn v-btn--block theme--dark" tabindex="-1"><div class="v-btn__content">Apply</div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to Very High Severity Security Findings"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-xs f-color-dark-black-s50 material-icons theme--light">keyboard_arrow_right</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to High Severity Security Findings"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-xs f-color-dark-black-s50 material-icons theme--light">keyboard_arrow_right</i></div></button>
+
+Exception occurred: Message: element click intercepted: Element <button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to High Severity Security Findings">...</button> is not clickable at point (1184, 468). Other element would receive the click: <span class="f-text-small-content f-color-dark-black-s50">...</span>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to Medium Severity Security Findings"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-xs f-color-dark-black-s50 material-icons theme--light">keyboard_arrow_right</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to Low Severity Security Findings"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-xs f-color-dark-black-s50 material-icons theme--light">keyboard_arrow_right</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon theme--light" aria-label="Navigate to Very Low Severity Security Findings"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-size-icon-xs f-color-dark-black-s50 material-icons theme--light">keyboard_arrow_right</i></div></button>
+
+<button disabled="disabled" type="button" class="f-btn-pri-outline ma-0 v-btn v-btn--disabled theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">power</i><span>Connect Data System</span></div></button>
+
+Exception occurred: Message: element click intercepted: Element <button disabled="disabled" type="button" class="f-btn-pri-outline ma-0 v-btn v-btn--disabled theme--light">...</button> is not clickable at point (957, 591). Other element would receive the click: <div class="flex text-xs-right px-3 py-2">...</div>
+
+<button disabled="disabled" type="button" class="f-btn-pri-outline ma-0 ml-2 v-btn v-btn--disabled theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">find_in_page</i><span>Add Discovery Scan</span></div></button>
+
+Exception occurred: Message: element click intercepted: Element <button disabled="disabled" type="button" class="f-btn-pri-outline ma-0 ml-2 v-btn v-btn--disabled theme--light">...</button> is not clickable at point (1126, 591). Other element would receive the click: <div class="flex text-xs-right px-3 py-2">...</div>
+
+<button disabled="disabled" type="button" class="v-btn v-btn--disabled v-btn--flat v-btn--icon theme--light" aria-label="Previous page"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">chevron_left</i></div></button>
+
+<button disabled="disabled" type="button" class="v-btn v-btn--disabled v-btn--flat v-btn--icon theme--light" aria-label="Next page"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">chevron_right</i></div></button>
+
+<button type="button" class="f-feedback-button f-btn-white ma-0 v-btn theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon f-outlined f-color-blue-s100 material-icons theme--light">send</i><span class="f-text-small-content f-color-dark-black-s50">Send Feedback</span></div></button>
+
+Exception occurred: Message: element click intercepted: Element <button type="button" class="f-feedback-button f-btn-white ma-0 v-btn theme--light">...</button> is not clickable at point (1190, 460). Other element would receive the click: <html lang="en" translate="no" style="--autiBarHeight: 0px;">...</html>
+
+<button type="button" class="f-btn-square f-btn-pri f-sidekick-btn ma-0 v-btn theme--light"><div class="v-btn__content"><div class="layout align-center justify-space-between"><div class="flex shrink"><svg version="1.1" viewBox="0 0 48 48" class="f-icon-sidekick d-block svg-icon svg-fill"><path pid="0" fill-rule="evenodd" clip-rule="evenodd" d="M13.245 4.39c-5.39-1.825-10.551 3.284-8.781 8.694l2.85 8.723a6.912 6.912 0 0 1-.016 4.345L4.37 34.879c-1.812 5.4 3.322 10.553 8.727 8.757l8.783-2.919a6.908 6.908 0 0 1 4.318-.012l8.722 2.846c5.405 1.762 10.504-3.394 8.688-8.78l-2.877-8.534a6.913 6.913 0 0 1-.008-4.393l2.91-8.736c1.8-5.407-3.346-10.547-8.747-8.739l-8.704 2.915a6.907 6.907 0 0 1-4.407-.007L13.245 4.39z" _fill="#000"></path></svg></div><div class="flex f-show-on-hover shrink"><div class="layout align-center"><div class="flex shrink"><i aria-hidden="true" class="v-icon f-command-icon material-icons theme--light">keyboard_command_key</i></div><div class="flex shrink"><div class="f-text-medium-content f-color-securiti-white">+K</div></div></div></div></div><div class="f-text-medium-content f-text-semibold f-color-securiti-white f-show-on-hover">Ask Copilot</div></div></button>
+
+<button type="button" class="f-btn-underline ma-0 mr-2 v-btn theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">history_toggle_off</i><span>History</span></div></button>
+
+<button type="button" class="f-btn-underline ma-0 v-btn theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">close</i><span>Close</span></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon v-btn--large theme--light"><div class="v-btn__content"><svg width="40" height="40" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_626_192586)"><circle cx="48" cy="48" r="24" fill="url(#paint0_radial_626_192586)"></circle></g><circle cx="48" cy="48" r="22.75" stroke="#E8F6FC" stroke-width="2.5"></circle><circle cx="48" cy="48" r="21" stroke="white" stroke-width="2"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M43.698 40.156c-2.156-.73-4.22 1.314-3.512 3.478l1.14 3.489a2.765 2.765 0 0 1-.007 1.738l-1.172 3.491c-.724 2.162 1.33 4.223 3.491 3.504l3.512-1.167a2.763 2.763 0 0 1 1.728-.005l3.488 1.138c2.162.705 4.202-1.357 3.475-3.512l-1.15-3.413a2.766 2.766 0 0 1-.003-1.757l1.164-3.495c.72-2.163-1.339-4.219-3.5-3.495l-3.48 1.166a2.763 2.763 0 0 1-1.764-.003l-3.412-1.154z" fill="white"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M64.5 48c0 9.113-7.387 16.5-16.5 16.5S31.5 57.113 31.5 48 38.887 31.5 48 31.5 64.5 38.887 64.5 48zM48 64c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16z" fill="#E8F6FC" opacity="0.8"></path><defs><filter id="filter0_d_626_192586" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset></feOffset><feGaussianBlur stdDeviation="12"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0.445833 0 0 0 0 0.9335 0 0 0 0 1 0 0 0 1 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_626_192586"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_626_192586" result="shape"></feBlend></filter><radialGradient id="paint0_radial_626_192586" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(69.5 69.5) rotate(-139.917) scale(66.0038 42.7058)"><stop offset="0.0856237" stop-color="#CC8AFF"></stop><stop offset="0.628062" stop-color="#1B9BFF"></stop></radialGradient></defs></svg></div></button>
+
+<button type="button" class="v-btn v-btn--icon theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">close</i></div></button>
+
+<button type="button" class="ma-0 v-btn v-btn--icon v-btn--small theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">play_arrow</i></div></button>
+
+<a href="#/help-center/?modulePath=modules%2Fdata-intelligence%2Fen%2Findex-en.html%3FcontextId%3DsdiOverview" class="v-list__tile v-list__tile--link theme--light" target="_blank" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Tech Docs</div></div></a>
+
+<a href="#/settings/di-iaas-cloud?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">IaaS Cloud Connectors</div></div></a>
+
+<a href="#/settings/di-cmdb-systems?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">CMDB Systems Connectors</div></div></a>
+
+<a href="#/settings/di-datastores-monitored?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data System Connectors</div></div></a>
+
+<a href="#/settings/pods?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Pods Deployment</div></div></a>
+
+<a href="#/settings/elastic-pods?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Elastic Pods Deployment</div></div></a>
+
+<a href="#/settings/storage-settings?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Private Cloud Storage</div></div></a>
+
+<a href="#/settings/policy-notification-templates?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Email Notification Templates</div></div></a>
+
+<a href="#/settings/content-classification/data-element-types?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Elements</div></div></a>
+
+<a href="#/settings/content-classification/dictionaries?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Dictionaries</div></div></a>
+
+<a href="#/settings/content-classification/document-types?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Document Categories</div></div></a>
+
+<a href="#/settings/content-classification/file-formats?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Formats</div></div></a>
+
+<a href="#/settings/content-classification/content-profiles?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Content Profiles</div></div></a>
+
+<a href="#/settings/edm-indexes?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Exact Data Indexes</div></div></a>
+
+<a href="#/settings/exact-data-profiles?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Exact Data Profiles</div></div></a>
+
+<a href="#/discovery-scan-jobs-v2" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Scan Definitions</div></div></a>
+
+<a href="#/settings/scan-policies?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Scan Profiles</div></div></a>
+
+<a href="#/settings/discovery-scan-notification-templates?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Email Notification Templates</div></div></a>
+
+<a href="#/settings/instant-classification?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Instant Classify</div></div></a>
+
+<a href="#/settings/content-classification/cluster-analysis?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Cluster Analysis</div></div></a>
+
+<a href="#/settings/di-data-risk-profile?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Risk Profile</div></div></a>
+
+<a href="#/policies-dl" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Labeling Policies</div></div></a>
+
+<a href="#/policy-templates-dl" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Labeling Policy Templates</div></div></a>
+
+<a href="#/settings/classification-label?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Classification Labels</div></div></a>
+
+<a href="#/policies-fq" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Quarantine Policies</div></div></a>
+
+<a href="#/policy-templates-fq" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Quarantine Policy Template</div></div></a>
+
+<a href="#/policies-fq-v2" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Quarantine</div></div></a>
+
+<a href="#/policy-templates-fq-v2" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Quarantine Templates</div></div></a>
+
+<a href="#/policies-fr" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">File Retention</div></div></a>
+
+<a href="#/di-dashboard" aria-current="page" class="primary--text v-list__tile--active v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Systems Overview</div></div></a>
+
+<a href="#/di-graph" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">DataCommand Graph</div></div></a>
+
+<a href="#/structured-data-explorer" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Structured Data</div></div></a>
+
+<a href="#/unstructured-data-explorer" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Unstructured Data</div></div></a>
+
+<a href="#/ds-dashboard" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Streaming Data</div></div></a>
+
+<a href="#/data-risk-explorer" class="v-list__tile v-list__tile--link theme--light" tabindex="0"><div class="v-list__tile__content"><div class="v-list__tile__title f-text-semibold f-color-dark-black-s10" title="">Data Risk</div></div></a>
+
+<a href="#/di-dashboard" aria-current="page" class="primary--text v-list__tile--active v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Systems Overview</div></div></a>
+
+<a href="#/di-graph" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">DataCommand Graph</div></div></a>
+
+<a href="#/structured-data-explorer" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Structured Data</div></div></a>
+
+<a href="#/unstructured-data-explorer" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Unstructured Data</div></div></a>
+
+<a href="#/ds-dashboard" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Streaming Data</div></div></a>
+
+<a href="#/data-risk-explorer" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Risk</div></div></a>
+
+<a href="#/policies-dl" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Labeling Policies</div></div></a>
+
+<a href="#/policy-templates-dl" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Labeling Policy Templates</div></div></a>
+
+<a href="#/settings/classification-label?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Classification Labels</div></div></a>
+
+<a href="#/policies-fq" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Quarantine Policies</div></div></a>
+
+<a href="#/policy-templates-fq" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Quarantine Policy Template</div></div></a>
+
+<a href="#/policies-fq-v2" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Quarantine</div></div></a>
+
+<a href="#/policy-templates-fq-v2" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Quarantine Templates</div></div></a>
+
+<a href="#/policies-fr" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Retention</div></div></a>
+
+<a href="#/discovery-scan-jobs-v2" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Scan Definitions</div></div></a>
+
+<a href="#/settings/scan-policies?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Scan Profiles</div></div></a>
+
+<a href="#/settings/discovery-scan-notification-templates?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Email Notification Templates</div></div></a>
+
+<a href="#/settings/instant-classification?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Instant Classify</div></div></a>
+
+<a href="#/settings/content-classification/cluster-analysis?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Cluster Analysis</div></div></a>
+
+<a href="#/settings/di-data-risk-profile?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Risk Profile</div></div></a>
+
+<a href="#/settings/content-classification/data-element-types?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data Elements</div></div></a>
+
+<a href="#/settings/content-classification/dictionaries?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Dictionaries</div></div></a>
+
+<a href="#/settings/content-classification/document-types?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Document Categories</div></div></a>
+
+<a href="#/settings/content-classification/file-formats?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">File Formats</div></div></a>
+
+<a href="#/settings/content-classification/content-profiles?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Content Profiles</div></div></a>
+
+<a href="#/settings/edm-indexes?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Exact Data Indexes</div></div></a>
+
+<a href="#/settings/exact-data-profiles?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Exact Data Profiles</div></div></a>
+
+<a href="#/settings/di-iaas-cloud?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">IaaS Cloud Connectors</div></div></a>
+
+<a href="#/settings/di-cmdb-systems?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">CMDB Systems Connectors</div></div></a>
+
+<a href="#/settings/di-datastores-monitored?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Data System Connectors</div></div></a>
+
+<a href="#/settings/pods?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Pods Deployment</div></div></a>
+
+<a href="#/settings/elastic-pods?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Elastic Pods Deployment</div></div></a>
+
+<a href="#/settings/storage-settings?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Private Cloud Storage</div></div></a>
+
+<a href="#/settings/policy-notification-templates?filterbymodule=1" class="v-list__tile v-list__tile--link theme--light"><div class="v-list__tile__content"><div class="v-list__tile__title">Email Notification Templates</div></div></a>
+
+<a href="#/help-center/?modulePath=modules%2Fdata-intelligence%2Fen%2Findex-en.html%3FcontextId%3DsdiOverview" class="v-list__tile v-list__tile--link theme--light" target="_blank"><div class="v-list__tile__content"><div class="v-list__tile__title">Tech Docs</div></div></a>
+
+<a href="https://qa-helpcenter.securiti.xyz/modules/system-settings/en/configuring-organizations.html" target="_blank" class="0 v-btn v-btn--icon v-btn--small theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">launch</i></div></a>
+
+<a href="#/help-center/?modulePath=modules%2Fdata-intelligence%2Fen%2Findex-en.html%3FcontextId%3DsdiOverview" class="c-contextual-help-link f-btn-underline my-0 v-btn v-btn--router theme--light" target="_blank"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">help</i><span>Help</span></div></a>
+
+Exception occurred: Message: element click intercepted: Element <a href="#/help-center/?modulePath=modules%2Fdata-intelligence%2Fen%2Findex-en.html%3FcontextId%3DsdiOverview" class="c-contextual-help-link f-btn-underline my-0 v-btn v-btn--router theme--light" target="_blank">...</a> is not clickable at point (1172, 16). Other element would receive the click: <div class="v-btn__content">...</div>
+
+<a href="#/settings/di-datastores-monitored" class="f-btn-square f-btn-orange v-btn v-btn--router v-btn--small theme--light" title="Add Data System"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">add</i></div></a>
+
+<a href="#/settings/di-iaas-cloud" class="f-btn-square f-btn-orange v-btn v-btn--router v-btn--small theme--light" title="Add Region"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">add</i></div></a>
+
+<a href="#/settings/datastores-monitored" class="ma-0 v-btn v-btn--icon v-btn--small theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">arrow_forward</i></div></a>
+
+<a href="#/settings/datastores-monitored?inst=2&amp;tab=CONNECTOR" target="_blank" class="f-btn-pri-outline ma-0 v-btn v-btn--small theme--light"><div class="v-btn__content"><i aria-hidden="true" class="v-icon material-icons theme--light">find_in_page</i><span>Discover</span></div></a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/di-dashboard">
+            <div class="v-btn__content">IaaS Clouds</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/di-dashboard?tab=saas">
+            <div class="v-btn__content">SaaS Apps</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/discovery-scan-jobs-v2">
+            <div class="v-btn__content">Scan Definition</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/unstructured-data-explorer">
+            <div class="v-btn__content">Unstructured Data Explorer</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/unstructured-data-explorer">
+            <div class="v-btn__content">Cluster Analysis Dashboard</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/structured-data-explorer">
+            <div class="v-btn__content">Structured Data Explorer</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/ds-dashboard">
+            <div class="v-btn__content">Streaming Data Dashboard</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/policies-dl">
+            <div class="v-btn__content">Data Labeling Policies</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/policies-fq">
+            <div class="v-btn__content">File Quarantine Policies</div>
+            </a>
+
+<a large="" class="f-btn-flat f-btn-link f-align-top v-btn theme--light v-btn--large" href="#/data-risk-explorer">
+            <div class="v-btn__content">Data Risk Dashboard</div>
+            </a>
+
+<div tabindex="0" class="f-securiti-logo clickable"><!--c-brand-logo--><div class="c-brand-logo f-width-100 text-xs-center"><svg version="1.1" viewBox="0 0 52 52" class="svg-icon svg-fill" role="img" aria-label="UI Prod Version: 1.118.0-768566d263, Build: 6/24/2024, 11:26:17 AM
+Core Api Version: 1.118.0-18rc, Build: 2202"><title>UI Prod Version: 1.118.0-768566d263, Build: 6/24/2024, 11:26:17 AM
+Core Api Version: 1.118.0-18rc, Build: 2202</title><path pid="0" d="M17.3 2.3C12.9.9 8.7 5 10.1 9.4l2.3 7.1c.4 1.1.4 2.4 0 3.5L10 27.1c-1.5 4.4 2.7 8.6 7.1 7.1l7.1-2.4c1.1-.4 2.4-.4 3.5 0l7.1 2.3c4.4 1.4 8.5-2.8 7.1-7.1l-2.3-6.9c-.4-1.2-.4-2.4 0-3.6L42 9.4C43.5 5 39.3.8 34.9 2.3l-7.1 2.4c-1.2.4-2.4.4-3.6 0l-6.9-2.4zM26 26.7c2.3 0 4.4-.9 6-2.5 1.6-1.6 2.5-3.8 2.5-6 0-2.3-.9-4.4-2.5-6-1.6-1.6-3.8-2.5-6-2.5s-4.4.9-6 2.5-2.5 3.8-2.5 6c0 2.3.9 4.4 2.5 6 1.6 1.7 3.7 2.5 6 2.5z" fill-rule="evenodd" clip-rule="evenodd" fill="#f0f5f8"></path><path pid="1" d="M23.5 20.8c.3.3.7.6 1.2.8.4.2.9.3 1.4.3.5 0 .9-.1 1.4-.3.4-.2.8-.4 1.2-.8.3-.3.6-.7.8-1.2.2-.4.3-.9.3-1.4 0-.5-.1-.9-.3-1.4-.2-.4-.4-.8-.8-1.2-.7-.7-1.6-1-2.5-1-.9 0-1.8.4-2.5 1-.7.7-1 1.6-1 2.5-.3 1.1.1 2 .8 2.7zM7.1 45.1c-.2-1.9-1.8-2.4-2.8-2.4-1.5 0-2.9 1-2.9 2.5 0 1.1.9 1.7 2 2.1 1.5.5 2.1.7 2.1 1.4 0 .5-.5.9-1.1.9-.4 0-1.1-.2-1.2-1h-2c.1 1.9 1.8 2.6 3.1 2.6 1.7 0 3.1-1 3-2.7 0-1.7-1.4-2.1-2.7-2.4-.8-.2-1.3-.5-1.4-1 0-.4.3-.8.9-.8.7 0 1 .4 1 .9h2zM16.3 47.6c.2-1.4-.2-2.6-1.2-3.6-.7-.8-1.8-1.2-3-1.2-2.4 0-4.2 2-4.2 4.2s1.8 4.2 4.2 4.2c.8 0 1.6-.2 2.3-.7.7-.4 1.2-1.1 1.6-2h-2c-.4.7-1 1.1-1.9 1.1-1.1 0-2.2-.7-2.3-2h6.5zm-6.4-1.5c.1-.8.8-1.8 2.3-1.8 1.4 0 2.2 1 2.3 1.8H9.9zM23.4 48c-.3.7-1 1.4-2.2 1.4-1.4 0-2.4-1-2.4-2.4 0-.7.2-1.3.7-1.8.5-.4 1-.7 1.7-.7 1 0 1.8.6 2.2 1.4h1.9c-.5-1.9-2.2-3.2-4.2-3.2-2.4 0-4.2 1.9-4.2 4.2 0 2.3 1.7 4.2 4.3 4.2 2.1 0 3.6-1.4 4.1-3.1h-1.9zM33.9 43H32v4.4c0 1.1-.5 2-1.8 2-1.4 0-1.7-.9-1.7-2.1V43h-1.9v4.8c0 1.4.5 3.4 3.1 3.4 1.4 0 2.2-.7 2.5-1.3V51H34v-8zM35.5 50.9h1.9v-4.3c0-1.4.7-2 2-2h.1v-1.9c-1.2 0-1.9.6-2.2 1.3v-1h-1.8v7.9zM40.4 41.9h1.9v-1.7h-1.9v1.7zm0 9h1.9v-8h-1.9v8zM44.4 50.9h1.9v-6.5h1.4V43h-1.4v-2.8h-1.9V43h-1.3v1.5h1.3v6.4zM48.5 41.9h1.9v-1.7h-1.9v1.7zm0 9h1.9v-8h-1.9v8z" fill="#f0f5f8"></path></svg></div></div>
+
+<div tabindex="0" title="Main Menu" class="f-dashboard-icon clickable"><svg version="1.1" viewBox="0 0 48 48" class="f-size-icon-md svg-icon svg-fill"><path pid="0" d="M16.245 10.123a6.122 6.122 0 1 1-12.245 0 6.122 6.122 0 0 1 12.245 0z" fill="#626469"></path><path pid="1" d="M30.122 10.123a6.122 6.122 0 1 1-12.244 0 6.122 6.122 0 0 1 12.244 0z" fill="#ADCB12"></path><path pid="2" d="M44 10.123a6.122 6.122 0 1 1-12.245 0 6.122 6.122 0 0 1 12.245 0z" fill="#626469"></path><path pid="3" d="M16.245 24A6.122 6.122 0 1 1 4 24a6.122 6.122 0 0 1 12.245 0z" fill="#EB5B2D"></path><path pid="4" d="M30.122 24a6.122 6.122 0 1 1-12.244 0 6.122 6.122 0 0 1 12.244 0z" fill="#F6B647"></path><path pid="5" d="M44 24a6.122 6.122 0 1 1-12.245 0A6.122 6.122 0 0 1 44 24z" fill="#1AB1C6"></path><path pid="6" d="M16.245 37.878a6.122 6.122 0 1 1-12.245 0 6.122 6.122 0 0 1 12.245 0z" fill="#626469"></path><path pid="7" d="M30.122 37.878a6.123 6.123 0 1 1-12.245 0 6.123 6.123 0 0 1 12.245 0z" fill="#DF4D6F"></path><path pid="8" d="M44 37.878a6.123 6.123 0 1 1-12.245 0 6.123 6.123 0 0 1 12.245 0z" fill="#626469"></path></svg></div>
+
+<div class="f-sub-module-nav clickable"><svg version="1.1" viewBox="0 0 48 48" class="f-size-icon-lg f-color-blue-s100 svg-icon svg-fill"><path pid="0" opacity=".3" d="M37.333 4H10.667C6.983 4 4 7.2 4 11.15V30.2c0 3.933 2.983 7.15 6.667 7.15h26.666c3.684 0 6.667-3.2 6.667-7.15V11.15C44 7.217 41.017 4 37.333 4zM30.65 21.917l-9.017 6c-.25.166-.55.25-.833.25-.25 0-.483-.067-.7-.184a1.517 1.517 0 0 1-.8-1.316V14.65c0-.55.3-1.067.8-1.317a1.49 1.49 0 0 1 1.533.067l9.017 6c.417.283.667.75.667 1.25s-.25.967-.667 1.25v.017zM17.333 44c-.916 0-1.683-.75-1.683-1.667 0-.916.733-1.666 1.65-1.666h.033c.917 0 1.667.75 1.667 1.666C19 43.25 18.25 44 17.333 44zm8.334-1.667c0-.916-.75-1.666-1.667-1.666h-.033c-.917 0-1.65.75-1.65 1.666 0 .917.766 1.667 1.683 1.667s1.667-.75 1.667-1.667zm6.666 0c0-.916-.75-1.666-1.666-1.666h-.034c-.916 0-1.65.75-1.65 1.666 0 .917.767 1.667 1.684 1.667.916 0 1.666-.75 1.666-1.667z"></path><path pid="1" d="M37.333 7.333c1.834 0 3.334 1.7 3.334 3.817V30.2c0 2.1-1.5 3.817-3.334 3.817H10.667c-1.834 0-3.334-1.7-3.334-3.817V11.15c0-2.1 1.5-3.817 3.334-3.817h26.666zm0-3.333H10.667C6.983 4 4 7.2 4 11.15V30.2c0 3.933 2.983 7.15 6.667 7.15h26.666c3.684 0 6.667-3.2 6.667-7.15V11.15C44 7.217 41.017 4 37.333 4zM20.317 29a1.66 1.66 0 0 1-.784-.2 1.64 1.64 0 0 1-.883-1.467V14c0-.617.333-1.183.883-1.467a1.673 1.673 0 0 1 1.717.084l10 6.666c.467.317.75.834.75 1.384 0 .55-.283 1.083-.75 1.383l-10 6.667c-.283.183-.6.283-.917.283h-.016zm1.666-11.883v7.1l5.334-3.55-5.334-3.55zM17.333 44c-.916 0-1.683-.75-1.683-1.667 0-.916.733-1.666 1.65-1.666h.033c.917 0 1.667.75 1.667 1.666C19 43.25 18.25 44 17.333 44zm8.334-1.667c0-.916-.75-1.666-1.667-1.666h-.033c-.917 0-1.65.75-1.65 1.666 0 .917.766 1.667 1.683 1.667s1.667-.75 1.667-1.667zm6.666 0c0-.916-.75-1.666-1.666-1.666h-.034c-.916 0-1.65.75-1.65 1.666 0 .917.767 1.667 1.684 1.667.916 0 1.666-.75 1.666-1.667z"></path></svg><div class="v-menu"></div></div>
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
+Exception occurred: Message: no such window: target window already closed
+
