@@ -1,4 +1,4 @@
-from lib.methods import Browser
+from lib.browser_methods import Browser
 
 import json
 import time
@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from lib.node import WebElementNode
+from lib.web_element_node import WebElementNode
 
 
 def main():

@@ -1,5 +1,5 @@
-from lib.drivers import check_and_install_chrome_driver
-from lib.node import WebElementNode
+from lib.web_drivers import check_and_install_chrome_driver
+from lib.web_element_node import WebElementNode
 
 # Selenium script to extract links
 from selenium import webdriver
