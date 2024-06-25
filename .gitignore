@@ -3,4 +3,8 @@ lib/__pycache__/
 env/
 data.json
 *links.txt
-lib/*.txt
+*.txt
+*.log
+data/*.dot
+data/*.svg
+*.svg

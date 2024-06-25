@@ -1,4 +1,5 @@
-from lib.drivers import check_and_install_chrome_driver
+from lib.web_drivers import check_and_install_chrome_driver
+from lib.web_element_node import WebElementNode
 
 # Selenium script to extract links
 from selenium import webdriver
@@ -10,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.remote.webelement import WebElement
 
 
 import time
@@ -17,11 +19,30 @@ import pickle
 import os
 import json
 
-URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
-CLASSNAME = "ld-tab-content"
-COOKIES_FILE = "cookies.pkl"
+COOKIES_FILE = "data/cookies.pkl"
+CRED_FILE = "data/data.json"
+TRAVERSE_SITE_LOGFILE = "data/traverse_site.log"
+CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
+MAX_DEPTH = 3
+
+def remove_duplicate_webelements(elements: list[WebElement]):
+    '''Remove Selenium Webelements with same outerHTML attributes from a list of elements'''
+    ret = []
+    for element in elements:
+        found_dup = False
+        for ret_element in ret:
+            try:
+                if element.get_attribute("outerHTML") == ret_element.get_attribute("outerHTML"):
+                    found_dup = True
+                    break
+            except Exception as e:
+                print("remove_duplicate_webelements: ", str(e).split("\n")[0])
+        if not found_dup:
+            ret.append(element)
+    return ret
 
 class Browser():
+
     def __init__(self) -> None:
         # Check if chromedriver is installed, if not install it
         check_and_install_chrome_driver()
@@ -41,7 +62,7 @@ class Browser():
     def open_securiti_page(self, url: str, xpath_for_redirect_load: str=None):
         self.driver.get(url)
         # read data.json as a dictionary
-        with open("lib/data.json", 'r') as file:
+        with open(CRED_FILE, 'r') as file:
             data = json.load(file)
         # login and wait for the page to load (wait for the li element to be present)
         if not self.is_logged_in():
@@ -99,7 +120,7 @@ class Browser():
         else:
             time.sleep(10)
         
-        self.save_cookies()
+        # self.save_cookies()
 
 
     def save_cookies(self):
@@ -112,21 +133,24 @@ class Browser():
                 cookies = pickle.load(file)
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
+
     def check_and_close_modal(self):
         '''Checks all close buttons and returns after one
         successful click. It can be the case that no close buttons
         are found or none are clickable.
         '''
-        close_xpath = "//*[contains(@class, 'close')]"
-        closures = self.get_all_elements(By.XPATH, close_xpath)
+        ret = False
+        closures = self.get_all_elements(By.XPATH, CLOSE_MODAL_XPATHS)
         # check if any is clickable and then click
-        for closure in closures:
+        # enumerate closures
+        for ind, closure in enumerate(closures):
             try:
                 closure.click()
-                return True # close if a single close button is clicked
+                ret = True # close if a single close button is clicked
             except Exception as e:
-                print(str(e).split("\n")[0])
-        return False
+                print(f"check_and_close_modal {ind}: {str(e).split("\n")[0]}")
+                continue
+        return ret
     
 
     def extract_links_securiti(self, url: str, xpath_for_urls: str, file_name: str, xpath_for_redirect_load: str=None, link_format_func: callable = lambda x: x):
@@ -150,47 +174,53 @@ class Browser():
             for link in links:
                 file.write(link + "\n")
     
-    def click_element_at_coordinates(self, element):
+    def click_element_at_coordinates(self, element: WebElement):
         '''Clicks on an element at its specific coordinates, bypassing any overlays'''
         action = ActionChains(self.driver)
-        location = element.location
-        size = element.size
-        x = location['x'] + size['width'] / 2
-        y = location['y'] + size['height'] / 2
+        x = element.location['x'] + element.size['width'] / 2
+        y = element.location['y'] + element.size['height'] / 2
         action.move_by_offset(x, y).click().perform()
         action.reset_actions()  # Reset the action to prevent offset issues in further actions
         time.sleep(1)  # Wait for the click to be processed
 
-    def click_element_and_handle_new_tab(self, div, urls_explored: set):
+    def click_element_and_handle_new_tab(self, element: WebElement, urls_explored: set, xpaths: list[str], root: WebElementNode, depth: int):
+        # add this url in discovered urls
+        curr_page_url = self.driver.current_url
+        urls_explored.add(curr_page_url)
+
+        # return dict. was important prev to rerefer the elements after the page may have opened a new url, that can potentially lead to stale references from the original page. Not being used currenlty as such
         ret_dict = {'reload_elements': False}
+        
         try:
-            curr_page_url = self.driver.current_url
-            urls_explored.add(curr_page_url)
-            # check if div is interactable
-            if not div.is_displayed():
+            # check if element is at least displayed. To prevent clicking on hiddden elemnets. Not sure of its exact working
+            if not element.is_displayed():
                 return ret_dict
-            div.click()
+            
+            element.click()
             time.sleep(5)  
-            # check if url has changed
+            
             new_page_url = self.driver.current_url
+            # check if url has changed
             if new_page_url != curr_page_url:
-                time.sleep(5)
-                self.driver.back()
+                if new_page_url in urls_explored:
+                    pass
+                else:
+                    time.sleep(10)
+                    self.traverse_site(xpaths=xpaths, root=root, urls_explored=urls_explored, depth=(depth + 1)) # Recursively handle the new page
+                
+                # there can be multiple redirects so we need to go back to the original page
+                while self.driver.current_url != curr_page_url:
+                    self.driver.back()
+                    time.sleep(5)
                 ret_dict['reload_elements'] = True
-                time.sleep(5)
-                # if new_page_url in urls_explored:
-                #     # use browser back button
-                #     self.driver.back()
-                #     return
-                # self.traverse_site()  # Recursively handle the new page
-                pass
             else:
+                # in case when there was no clickable close element found, try to click on the elemnet again to 
                 if not self.check_and_close_modal():
                 # add logic of interacting with the elemnet in try except block
                     try:
-                        div.click()
+                        element.click()
                     except:
-                        self.click_element_at_coordinates(div)
+                        self.click_element_at_coordinates(element)
                 time.sleep(5) # wait for close modal or interaction
             return ret_dict
         except Exception as e:
@@ -200,28 +230,42 @@ class Browser():
         '''Implement handling of modals or other interactions if needed'''
         pass
     
-    def traverse_site(self, xpaths: list[str]):
+    def traverse_site(self, xpaths: list[str], root: WebElementNode, urls_explored: set, depth: int):
         '''Traverse the site by clicking on all divs that contain only text'''
+        if depth == MAX_DEPTH:
+            return
         clickable_elements = []
         [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
-        # write outer html of all elemnts to traverse_site.temp.txt
-        with open("traverse_site.temp.txt", 'w') as file:
+
+        print("num clickable elements: ", len(clickable_elements))
+        clickable_elements = remove_duplicate_webelements(clickable_elements)
+        print("num clickable elements after removing duplicates: ", len(clickable_elements))
         
-            page_urls = set()
-            for i in range(len(clickable_elements)):
+        # automatically attaches these nodes to root
+        nodes = [WebElementNode(name=(str(root.name) + '_' + str(i)), curr_url=self.driver.current_url, element=element) for i, element in enumerate(clickable_elements)]
+        # write outer html of all elemnts
+        with open(TRAVERSE_SITE_LOGFILE, 'w') as file:
+        
+            for node in nodes:
                 try:
                     # incase the url changes, reload the elements in order to avoid stale element exception
                     # this assumes that the original page is restored by click_element_and_handle_new_tab function
                     # through the browser back button
                     # not that value of i does not change so the loop will continue from the same index
-                    reload_elements = self.click_element_and_handle_new_tab(clickable_elements[i], page_urls)['reload_elements']
-                    if reload_elements:
-                        clickable_elements = []
-                        [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
-                    file.write(clickable_elements[i].get_attribute("outerHTML") + "\n")
+                    element = node.relocate_element(self.driver)
+                    file.write(element.get_attribute("outerHTML") + "\n\n")
+                    self.click_element_and_handle_new_tab(element=element, 
+                                                            urls_explored=urls_explored,
+                                                            xpaths=xpaths,
+                                                            root=node,
+                                                            depth=depth
+                                                          )
+                    node.parent = root
                 except Exception as e:
                     # write the exception title to file
-                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n")
+                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
+                    # remove the node from the tree
+                    node.parent = None
 
 
 if __name__ == "__main__":
