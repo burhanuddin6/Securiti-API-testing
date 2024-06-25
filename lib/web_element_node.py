@@ -29,7 +29,7 @@ class WebElementNode(NodeMixin):
         return f"WebElementNode(name={self.name}, url={self.url}, tag_name={self.tag_name}, attributes={self.attributes})"
 
     def relocate_element(self, driver: webdriver.Chrome):
-        if driver.c_url != self.url:
+        if driver.current_url != self.url:
             print(driver.current_url, self.url)
             raise ValueError("The current url does not match the url of this node")
         xpath = self._generate_xpath()
@@ -69,10 +69,11 @@ if __name__ == "__main__":
 
     # Creating nodes
     root = WebElementNode("root", "https://qa.securiti.xyz")
-    child1 = WebElementNode("child1", "https://qa.securiti.xyz", parent=root)
-    child2 = WebElementNode("child2", "https://qa.securiti.xyz", parent=root)
+    child1 = WebElementNode("child1", "https://qa.securiti.xyz")
+    child2 = WebElementNode("child2", "https://qa.securiti.xyz")
     grandchild1 = WebElementNode("grandchild1", "https://qa.securiti.xyz", parent=child1)
+    root.children = [child1, child2]
 
-    # Displaying the tree
-    from anytree.exporter import UniqueDotExporter
-    UniqueDotExporter(root, nodeattrfunc=WebElementNode.nodeattrfunc).to_picture("tree.svg")
+    # Displaying the using render
+    for pre, fill, node in RenderTree(root):
+        print("%s%s" % (pre, node.name))

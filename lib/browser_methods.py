@@ -258,7 +258,7 @@ class Browser():
                                                             root=node,
                                                             depth=depth
                                                           )
-                    root.children.append(node)
+                    node.parent = root
                 except Exception as e:
                     # write the exception title to file
                     file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
