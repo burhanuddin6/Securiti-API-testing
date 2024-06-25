@@ -22,7 +22,7 @@ import json
 COOKIES_FILE = "data/cookies.pkl"
 CRED_FILE = "data/data.json"
 TRAVERSE_SITE_LOGFILE = "data/traverse_site.log"
-CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //i[contains(text()='close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
+CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
 MAX_DEPTH = 3
 
 def remove_duplicate_webelements(elements: list[WebElement]):
@@ -142,12 +142,14 @@ class Browser():
         ret = False
         closures = self.get_all_elements(By.XPATH, CLOSE_MODAL_XPATHS)
         # check if any is clickable and then click
-        for closure in closures:
+        # enumerate closures
+        for ind, closure in enumerate(closures):
             try:
                 closure.click()
                 ret = True # close if a single close button is clicked
             except Exception as e:
-                print(str(e).split("\n")[0])
+                print(f"check_and_close_modal {ind}: {str(e).split("\n")[0]}")
+                continue
         return ret
     
 
