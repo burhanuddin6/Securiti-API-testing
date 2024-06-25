@@ -6,4 +6,4 @@ data.json
 *.txt
 *.log
 data/*.dot
-*.svg
+data/*.svg
