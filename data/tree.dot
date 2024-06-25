@@ -1,0 +1,9 @@
+digraph tree {
+    "0x0" [{'label': 'name: root', 'shape': 'box', 'style': 'filled', 'fillcolor': 'lightblue'}];
+    "0x1" [{'label': 'name: child1', 'shape': 'box', 'style': 'filled', 'fillcolor': 'lightblue'}];
+    "0x2" [{'label': 'name: grandchild1', 'shape': 'box', 'style': 'filled', 'fillcolor': 'lightblue'}];
+    "0x3" [{'label': 'name: child2', 'shape': 'box', 'style': 'filled', 'fillcolor': 'lightblue'}];
+    "0x0" -> "0x1";
+    "0x0" -> "0x3";
+    "0x1" -> "0x2";
+}

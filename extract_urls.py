@@ -32,7 +32,7 @@ def main():
 
     # display the tree in an image UniqueDotExporter
     from anytree.exporter import UniqueDotExporter
-    UniqueDotExporter(root).to_picture("tree.png")
+    UniqueDotExporter(root, nodeattrfunc=WebElementNode.nodeattrfunc).to_picture("tree.svg")
     
     # xpath = "//button[@class='f-feedback-button f-btn-white ma-0 v-btn theme--light']"
     # browser.click_element(By.XPATH, xpath)

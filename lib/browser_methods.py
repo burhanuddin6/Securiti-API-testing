@@ -19,13 +19,14 @@ import pickle
 import os
 import json
 
-URL = "https://qa-helpcenter.securiti.xyz/modules/data-intelligence/en/data-intelligence-target.html"
-CLASSNAME = "ld-tab-content"
-COOKIES_FILE = "cookies.pkl"
-MAX_DEPTH = 2
+COOKIES_FILE = "data/cookies.pkl"
+CRED_FILE = "data/data.json"
+TRAVERSE_SITE_LOGFILE = "data/traverse_site.log"
+CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //i[contains(text()='close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
+MAX_DEPTH = 3
 
 def remove_duplicate_webelements(elements: list[WebElement]):
-    '''Remove Similar looking elements'''
+    '''Remove Selenium Webelements with same outerHTML attributes from a list of elements'''
     ret = []
     for element in elements:
         found_dup = False
@@ -61,7 +62,7 @@ class Browser():
     def open_securiti_page(self, url: str, xpath_for_redirect_load: str=None):
         self.driver.get(url)
         # read data.json as a dictionary
-        with open("lib/data.json", 'r') as file:
+        with open(CRED_FILE, 'r') as file:
             data = json.load(file)
         # login and wait for the page to load (wait for the li element to be present)
         if not self.is_logged_in():
@@ -119,7 +120,7 @@ class Browser():
         else:
             time.sleep(10)
         
-        self.save_cookies()
+        # self.save_cookies()
 
 
     def save_cookies(self):
@@ -132,14 +133,14 @@ class Browser():
                 cookies = pickle.load(file)
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
+
     def check_and_close_modal(self):
         '''Checks all close buttons and returns after one
         successful click. It can be the case that no close buttons
         are found or none are clickable.
         '''
         ret = False
-        close_xpath = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
-        closures = self.get_all_elements(By.XPATH, close_xpath)
+        closures = self.get_all_elements(By.XPATH, CLOSE_MODAL_XPATHS)
         # check if any is clickable and then click
         for closure in closures:
             try:
@@ -189,7 +190,6 @@ class Browser():
         ret_dict = {'reload_elements': False}
         
         try:
-            
             # check if element is at least displayed. To prevent clicking on hiddden elemnets. Not sure of its exact working
             if not element.is_displayed():
                 return ret_dict
@@ -197,9 +197,8 @@ class Browser():
             element.click()
             time.sleep(5)  
             
-            # check if url has changed
             new_page_url = self.driver.current_url
-            
+            # check if url has changed
             if new_page_url != curr_page_url:
                 if new_page_url in urls_explored:
                     pass
@@ -235,14 +234,17 @@ class Browser():
             return
         clickable_elements = []
         [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
+
+        print("num clickable elements: ", len(clickable_elements))
         clickable_elements = remove_duplicate_webelements(clickable_elements)
-        # print all html attributes
-        # automatically attaches these nodes to root
-        [WebElementNode(name=(str(root.name) + '_' + str(i)), curr_url=self.driver.current_url, element=element, parent=root) for i, element in enumerate(clickable_elements)]
-        # write outer html of all elemnts to traverse_site.temp.txt 
-        with open("traverse_site.temp.txt", 'w') as file:
+        print("num clickable elements after removing duplicates: ", len(clickable_elements))
         
-            for node in root.children:
+        # automatically attaches these nodes to root
+        nodes = [WebElementNode(name=(str(root.name) + '_' + str(i)), curr_url=self.driver.current_url, element=element) for i, element in enumerate(clickable_elements)]
+        # write outer html of all elemnts
+        with open(TRAVERSE_SITE_LOGFILE, 'w') as file:
+        
+            for node in nodes:
                 try:
                     # incase the url changes, reload the elements in order to avoid stale element exception
                     # this assumes that the original page is restored by click_element_and_handle_new_tab function
@@ -256,9 +258,12 @@ class Browser():
                                                             root=node,
                                                             depth=depth
                                                           )
+                    root.children.append(node)
                 except Exception as e:
                     # write the exception title to file
                     file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
+                    # remove the node from the tree
+                    node.parent = None
 
 
 if __name__ == "__main__":
