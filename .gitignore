@@ -7,3 +7,4 @@ data.json
 *.log
 data/*.dot
 data/*.svg
+*.svg
