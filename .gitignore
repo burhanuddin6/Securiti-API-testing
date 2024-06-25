@@ -5,4 +5,5 @@ data.json
 *links.txt
 *.txt
 *.log
-*.dot
+data/*.dot
+*.svg
