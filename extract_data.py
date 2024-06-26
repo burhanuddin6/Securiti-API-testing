@@ -26,8 +26,8 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 login_url = 'https://qa.securiti.xyz/#/login?redirect=%2Fhelp-center'  
 driver.get(login_url)
 
-username = 'batool@shan.stack'
-password = 'Dino@23sxc077173'
+username = ''
+password = ''
 
 # locating username element
 username_elem = WebDriverWait(driver, 10).until(
