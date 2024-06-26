@@ -1,5 +1,6 @@
 from lib.web_drivers import check_and_install_chrome_driver
 from lib.web_element_node import WebElementNode
+from lib.config import config
 
 # Selenium script to extract links
 from selenium import webdriver
@@ -19,11 +20,7 @@ import pickle
 import os
 import json
 
-COOKIES_FILE = "data/cookies.pkl"
-CRED_FILE = "data/data.json"
-TRAVERSE_SITE_LOGFILE = "data/traverse_site.log"
-CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
-MAX_DEPTH = 3
+
 
 def remove_duplicate_webelements(elements: list[WebElement]):
     '''Remove Selenium Webelements with same outerHTML attributes from a list of elements'''
@@ -62,7 +59,7 @@ class Browser():
     def open_securiti_page(self, url: str, xpath_for_redirect_load: str=None):
         self.driver.get(url)
         # read data.json as a dictionary
-        with open(CRED_FILE, 'r') as file:
+        with open(config['credentials_file'], 'r') as file:
             data = json.load(file)
         # login and wait for the page to load (wait for the li element to be present)
         if not self.is_logged_in():
@@ -124,12 +121,12 @@ class Browser():
 
 
     def save_cookies(self):
-        with open(COOKIES_FILE, 'wb') as file:
+        with open(config['cookies_file'], 'wb') as file:
             pickle.dump(self.driver.get_cookies(), file)
 
     def load_cookies(self):
-        if os.path.exists(COOKIES_FILE):
-            with open(COOKIES_FILE, 'rb') as file:
+        if os.path.exists(config['cookies_file']):
+            with open(config['cookies_file'], 'rb') as file:
                 cookies = pickle.load(file)
                 for cookie in cookies:
                     self.driver.add_cookie(cookie)
@@ -140,7 +137,7 @@ class Browser():
         are found or none are clickable.
         '''
         ret = False
-        closures = self.get_all_elements(By.XPATH, CLOSE_MODAL_XPATHS)
+        closures = self.get_all_elements(By.XPATH, config['close_modal_xpaths'])
         # check if any is clickable and then click
         # enumerate closures
         for ind, closure in enumerate(closures):
@@ -232,7 +229,7 @@ class Browser():
     
     def traverse_site(self, xpaths: list[str], root: WebElementNode, urls_explored: set, depth: int):
         '''Traverse the site by clicking on all divs that contain only text'''
-        if depth == MAX_DEPTH:
+        if depth == config['max_depth']:
             return
         clickable_elements = []
         [(clickable_elements.extend(self.get_all_elements(By.XPATH, xpath))) for xpath in xpaths]
@@ -244,7 +241,7 @@ class Browser():
         # automatically attaches these nodes to root
         nodes = [WebElementNode(name=(str(root.name) + '_' + str(i)), curr_url=self.driver.current_url, element=element) for i, element in enumerate(clickable_elements)]
         # write outer html of all elemnts
-        with open(TRAVERSE_SITE_LOGFILE, 'w') as file:
+        with open(config['traverse_site_logfile'], 'w') as file:
         
             for node in nodes:
                 try:

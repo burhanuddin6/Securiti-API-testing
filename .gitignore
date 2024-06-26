@@ -8,3 +8,6 @@ data.json
 data/*.dot
 data/*.svg
 *.svg
+*.json
+data/*.json
+*.pkl
