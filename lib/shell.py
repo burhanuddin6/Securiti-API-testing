@@ -15,7 +15,8 @@ class MyShell(cmd.Cmd):
         self.current_tree = None
         self.current_node = None
         self.browser = Browser()
-
+        # maximize the screen
+        self.browser.driver.maximize_window()
     def do_load(self, arg):
         """Loads tree from a Json file 
         Usage: load filename
@@ -62,7 +63,7 @@ class MyShell(cmd.Cmd):
             self.current_tree = WebElementNode(name="root", curr_url=config['url'])
             self.browser.open_securiti_page(config['url'])
 
-            self.browser.traverse_site(xpaths=config['clickable_xpaths'], root=self.current_tree, urls_explored=set(), depth=1)
+            self.browser.traverse_site(xpaths=config['clickable_xpaths'], root=self.current_tree, nodes_dict=dict(), urls_explored=set(), depth=1)
             time.sleep(10)
 
             # display the tree in an image UniqueDotExporter
@@ -86,5 +87,6 @@ class MyShell(cmd.Cmd):
         Usage: exit
         """
         print("Exiting...")
+        self.browser.close_browser()
         return True
 
