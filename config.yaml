@@ -1,0 +1,13 @@
+clickable_xpaths:  
+  - //input
+  - //button
+  - //a[@href]
+  - //div[contains(@class, 'clickable')]
+
+close_modal_xpaths: //*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]
+url: https://qa.securiti.xyz
+cookies_file: data/cookies.pkl
+credentials_file: data/data.json
+traverse_site_logfile: data/traverse_site.log
+max_depth: 3
+
