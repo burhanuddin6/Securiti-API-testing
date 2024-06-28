@@ -6,13 +6,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
-    
-    
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webelement import WebElement
-
 
 import time
 import pickle
@@ -22,7 +20,7 @@ import json
 COOKIES_FILE = "data/cookies.pkl"
 CRED_FILE = "data/data.json"
 TRAVERSE_SITE_LOGFILE = "data/traverse_site.log"
-CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
+CLOSE_MODAL_XPATHS = "//*[contains(@class, 'close')] | //i[contains(text()='close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'Close')] | //*[contains(text(), 'cancel')]"
 MAX_DEPTH = 3
 
 def remove_duplicate_webelements(elements: list[WebElement]):
@@ -70,11 +68,6 @@ class Browser():
             time.sleep(5)
         else:
             time.sleep(5)
-            # this is not working
-            # TODO: fix this. Doesn't always want to wait for 10s if the page is already loaded
-            # WebDriverWait(self.driver, 10).until(
-            #     lambda driver: driver.execute_script("return document.readyState") == "complete"
-            # )
 
     def close_browser(self):
         self.driver.quit()
@@ -122,7 +115,6 @@ class Browser():
         
         # self.save_cookies()
 
-
     def save_cookies(self):
         with open(COOKIES_FILE, 'wb') as file:
             pickle.dump(self.driver.get_cookies(), file)
@@ -142,16 +134,26 @@ class Browser():
         ret = False
         closures = self.get_all_elements(By.XPATH, CLOSE_MODAL_XPATHS)
         # check if any is clickable and then click
-        # enumerate closures
-        for ind, closure in enumerate(closures):
+        for closure in closures:
             try:
                 closure.click()
                 ret = True # close if a single close button is clicked
             except Exception as e:
-                print(f"check_and_close_modal {ind}: {str(e).split("\n")[0]}")
-                continue
+                print(str(e).split("\n")[0])
         return ret
-    
+
+    def extract_console_errors(self):
+        # Extract console log errors
+        log_entries = self.driver.get_log('browser')
+        errors = [entry['message'] for entry in log_entries if entry['level'] == 'SEVERE']
+        return errors
+
+    def save_console_errors_to_file(self, node_name, errors):
+        # Save console errors to a text file
+        file_path = f"data/{node_name}_console_errors.txt"
+        with open(file_path, 'w') as file:
+            for error in errors:
+                file.write(error + "\n")
 
     def extract_links_securiti(self, url: str, xpath_for_urls: str, file_name: str, xpath_for_redirect_load: str=None, link_format_func: callable = lambda x: x):
         '''Goes to the securities website and extracts all the links from the page
@@ -198,6 +200,11 @@ class Browser():
             
             element.click()
             time.sleep(5)  
+
+            # Extract console errors and save them to a file
+            errors = self.extract_console_errors()
+            node_name = root.name
+            self.save_console_errors_to_file(node_name, errors)
             
             new_page_url = self.driver.current_url
             # check if url has changed
@@ -260,10 +267,10 @@ class Browser():
                                                             root=node,
                                                             depth=depth
                                                           )
-                    node.parent = root
+                    root.children.append(node)
                 except Exception as e:
                     # write the exception title to file
-                    file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
+                    # file.write(f"Exception occurred: {str(e).split('\n')[0]}\n\n")
                     # remove the node from the tree
                     node.parent = None
 
